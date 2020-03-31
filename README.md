@@ -1,1 +1,2 @@
-laravel-tran phuoc luan
+config :
+v-host : kenh14.com
