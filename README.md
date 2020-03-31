@@ -8,6 +8,11 @@ fix error xampp :The stream or file "/Applications/htdocs/kenh14/storage/logs/la
 terminal strorage:  $ cd .. ra mục strongrage:  sudo chmod -R 777 logs
 
  terminal strorage/sessions $ cd .. ra mục strongrage:  framework $ sudo chmod -R 777 sessions/
+ 
+ 
+ 
+ 
+ 
 terminal strorage/sessions $ cd .. ra mục strongrage : framework $ sudo chmod -R 777 views/
 
 
