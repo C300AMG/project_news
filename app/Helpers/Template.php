@@ -1,6 +1,7 @@
 <?php 
 
 namespace App\Helpers;
+use Config;
 
 class Template
 {
@@ -22,10 +23,7 @@ class Template
 	public static function showButtonAction($controllerName,$id,$status){
 
 				//định nghĩa thêm tham số cho buttonAction
-		$tmplButton = [
-			'active'   =>['title'=>'Kích Hoạt','class'=>'btn-success'],
-			'inactive' =>['title'=>'Chưa kích hoạt','class'=>'btn-danger'],
-		];
+		$tmplButton = Config::get('zvn.template.status');
 		//Khi người dùng chọn nút hiện tại 
 		$currentButton = $tmplButton[$status];
 		$link = route($controllerName.'/status',['status'=>$status,'id'=>$id]);
@@ -63,7 +61,31 @@ class Template
 		return $xhtml;
 	}	
 
+	//viết chức năng đổ buttonStatus
+	public static function showButtonStatus($itemsStatus)
+	{
+		$xhtml = '';
+		//muốn thêm 1 mảng vào đầu mảng 
+		$all['status'] = 'All';
+		$all['count'] = array_sum (array_column($itemsStatus,'count'));;
+		array_unshift($itemsStatus,$all);
+		$tmplButton = Config::get('zvn.template.status');
 
+
+		if(count($itemsStatus) > 0){
+			foreach ($itemsStatus as $item) {
+				$currentStatus = $tmplButton[$item['status']];
+				$itemOfStatus = $item['status'];
+				$xhtml .= sprintf('<a href="?filter_status=all" type="button" class="btn btn-primary">
+						%s <span class="badge bg-white">%s</span>
+						</a>',$currentStatus['title'],$item['count']);
+		
+			}
+
+		};
+		
+		return $xhtml;
+	}
 
 
 }

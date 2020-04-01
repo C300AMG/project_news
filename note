@@ -1,1 +1,5 @@
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/style.css') }}">
+           status X       count  X       class(màu btn)
+
+all 
+active 
+inactive 
